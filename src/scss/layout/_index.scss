@@ -1,0 +1,39 @@
+@use '../utils' as u;
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  gap: u.rem(40);
+  // width: min(100%-u.rem(40), u.rem(1000));
+  margin-inline: auto;
+
+  @include u.breakpoint-up(large) {
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto;
+  }
+
+  @include u.breakpoint-up(medium) {
+    padding: 0 u.rem(20);
+  }
+
+  &__main,
+  &__sidebar {
+    padding: u.rem(40);
+  }
+
+  &__main {
+    background-color: aliceblue;
+    color: hsl(0, 0%, 0%);
+  }
+
+  &__sidebar {
+    // background-color: hsl(16, 100%, 50%);
+    @include u.breakpoint-down(small) {
+      text-align: center;
+    }
+  }
+  &__widget {
+    background-color: hsl(16, 100%, 50%);
+  }
+}
